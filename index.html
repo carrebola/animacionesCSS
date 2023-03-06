@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transiciones y animaciones css</title>
+    <style>
+
+        /* TRANSICIONES */
+        header{
+            display: flex;
+            align-items: center;
+            height: 200px;
+            background-color: #a71919;
+            transition: all 0.1s linear; 
+        }
+        header:hover{
+            background-color: #491111;
+
+            transition-property: background-color;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+            transition-delay: 0.1s;
+        }
+        .avatar{
+            position: absolute;
+            left:-100px;
+            height: 200px;
+            transition: left 0.2s linear;
+        }
+        .avatar img{
+            height: 100%;
+        }
+        header:hover .avatar{
+            left: calc(100% - 150px);
+            transition: left 0.5s ease;
+        }
+        h1{
+            color:azure;
+            font-size: 5em;
+            width: 100%;            
+            text-align:center;
+            transition: all 0.1s;
+        }
+        header:hover h1{
+            color:cadetblue;
+            font-size: 6em;
+            transition: 
+                font-size 1s steps(3),
+                color 2s ease;
+        }
+
+        /* ANIMACIONES */
+
+        #pelota{
+            position: absolute;
+            top:300px;
+            width: 100px;
+            height: 100px;
+            
+            background-image:url("https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_1280.png");
+            background-size: cover;
+            animation:
+                batir 1s linear 0.5s 6 alternate running,
+                mover 1s linear 6 alternate 6s forwards running;
+        }
+        #pelota:hover{
+            animation-play-state: paused;
+        }
+       @keyframes batir {
+            0% { 
+                opacity: 0%;
+                /* width: 100px;
+                height: 100px; */
+            }
+
+            25%{
+                /* width: 210px;
+                height: 210px; */
+            }
+            100%{
+                opacity: 100%;
+                /* width: 150px;
+                height: 150px; */
+            }
+        }
+        @keyframes mover {
+            0%{
+                left: 200px;
+            }
+            100%{
+                left: 500px
+            }
+        }
+
+        /* TRANSFORMACIONES */
+        /* Transformaciones */
+        /* Rotaciones */
+        /* Escalas */
+
+        #animal{
+            width: 100px;
+            height: 100px;
+            background-image: url('https://static.nationalgeographic.es/files/styles/image_3200/public/01WAQbigeyes.jpg?w=1900&h=1425');
+            background-size: cover;
+            margin: 50px;
+            border: 2px solid;
+            
+        }
+        #animal:hover{
+            animation: bicho 0.5s linear forwards;
+        }
+        @keyframes bicho{
+            0%{
+                transform:  translate(20px) rotate(0) scale(1);
+            }
+            25%{
+                transform:  translate(0px) rotate(0);
+            }
+            100%{
+                --inclinado: 45deg;
+                transform:  rotate(var(--inclinado));
+            }
+        }
+
+        #cromo{
+            width: 150px;
+            height: 200px;
+            background-image: url('https://sites.google.com/site/superheroeis/_/rsrc/1468849384498/los-4-fantasticos/la-masa/La%20cosa.jpg');
+            background-size: cover;
+            transition: 0.1s;
+            box-shadow: 5px 5px 10px grey;
+        }
+        #cromo:hover{
+            transform: scaleX(-1);
+            transition: 0.5s;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vanilla Pills</h1>
+        <div class="avatar">
+            <img src="https://qph.cf2.quoracdn.net/main-qimg-c8f84675171d0f9c3536b47f3e8f059d-lq" alt="">
+        </div>        
+    </header>
+    <main>
+        <!-- <div id="pelota"></div> -->
+        <div id="animal"></div>
+        <div id="cromo"></div>
+    </main>
+</body>
+</html>
